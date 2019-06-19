@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import WebKit
+class ViewController: UIViewController, WKUIDelegate {
 
-class ViewController: UIViewController {
-
+    var webView: WKWebView!
+    let webConfiguration = WKWebViewConfiguration()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
+        let myURL = URL(string:"https://www.imdb.com")
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
+        
         // Do any additional setup after loading the view.
     }
+    
 
 
 }
